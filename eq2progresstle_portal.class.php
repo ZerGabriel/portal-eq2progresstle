@@ -16,7 +16,8 @@
  * $Id: eq2progresstle_portal.class.php 00001 2015-08-23 19:20:34Z Darkmaeg $
  * Modified Version of Hoofy's mybars progression module
  * This version populates the guild raid achievements from the Data Api
- * 
+ *
+ * V1.2 Minor fix
  * V1.1 Added Avatar Brell Serilius
  * V1.0 Initial Release - TLE Version
  */
@@ -29,7 +30,7 @@ class eq2progresstle_portal extends portal_generic {
 	protected static $path		= 'eq2progresstle';
 	protected static $data		= array(
 		'name'			=> 'EQ2 TLE Progression',
-		'version'		=> '1.1',
+		'version'		=> '1.2',
 		'author'		=> 'Darkmaeg',
 		'contact'		=> EQDKP_PROJECT_URL,
 		'description'	=> 'Everquest 2 TLE Progression',
@@ -249,12 +250,12 @@ class eq2progresstle_portal extends portal_generic {
 		$pop5=$spacer.'<font color="white">The Tribunal</font><br>';
 		//Check which have been killed
 		$tkillslist = $this->pdc->get('portal.module.eq2progresstle.'.$this->root_path);
-		if (!$tkillslist){
+				if (!$tkillslist){
 		for ($a=0; $a<=$ktot; $a++) {
 		$kdate = "";
 		if (($this->config('eq2progresstle_date')) == TRUE ) 		
 		{ ($stamp = date('m/d/Y', $achieve[$a]['completedtimestamp']));	 
-                ($kdate = '<font color="white">'.$stamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strike></font>'); }
+	        ($kdate = '<font color="white">'.$stamp.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strike></font>'); }
 		$acid = $achieve[$a]['id'];
 		//Check which were killed
 		if ($acid == '755589334')  {$shattered = $shattered + 1; $sh1 = $kdate.$this->killed($sh1);}
@@ -386,7 +387,9 @@ class eq2progresstle_portal extends portal_generic {
 		if ($acid == '1264497483') {$precipice = $precipice + 1; $pop3 = $kdate.$this->killed($pop3);}
 		if ($acid == '2302657105') {$precipice = $precipice + 1; $pop4 = $kdate.$this->killed($pop4);}
 		if ($acid == '3211824092') {$precipice = $precipice + 1; $pop5 = $kdate.$this->killed($pop5);}
+		
 		}
+		
 		//cache it
 		$tkillslist = array($sh1,$sh2,$sh3,$sh4,$sh5,$sh6,$sh7,$sh8,$sh9,$shattered,
 						   $ss1,$ss2,$splitpaw,
@@ -427,7 +430,7 @@ class eq2progresstle_portal extends portal_generic {
 		$fate = ($tkillslist[58].$tkillslist[59].$tkillslist[60].$tkillslist[61].$tkillslist[62].$tkillslist[63].$tkillslist[64]);
 		$zonetotal9 = ($tkillslist[65]);
 		$dest = ($tkillslist[66].$tkillslist[67].$tkillslist[68].$tkillslist[69].$tkillslist[70].$tkillslist[71].$tkillslist[72].$tkillslist[73].$tkillslist[74].$tkillslist[75].$tkillslist[76].$tkillslist[77].$tkillslist[78].$tkillslist[79].$tkillslist[80].$tkillslist[81].$tkillslist[82].$tkillslist[83].$tkillslist[84].$tkillslist[85].$tkillslist[86].$tkillslist[87]);
-                $zonetotal10 = ($tkillslist[88]);
+	        $zonetotal10 = ($tkillslist[88]);
 		$chain = ($tkillslist[89].$tkillslist[90].$tkillslist[91].$tkillslist[92]);
 		$zonetotal11 = ($tkillslist[93]);
 		$aren = ($tkillslist[94].$tkillslist[95].$tkillslist[96].$tkillslist[97].$tkillslist[98].$tkillslist[99].$tkillslist[100].$tkillslist[101].$tkillslist[102].$tkillslist[103]);
